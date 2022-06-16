@@ -5,17 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body {background-color: #000;}
-        p {
-            font-family: 'Courier New', Courier, monospace;
+        #screen {
+            background-color: #000;
             color: #fff;
+            font-family: monospace;
+            height: 50vh;
+            padding: 1em;
         }
     </style>
 </head>
 <body>
-    <p id="base"></p>
+    <div id="screen">
+        <div id="console"></div>
+    </div>
+    <br>
+    <form onsubmit="processInput(); return false;">
+        <input type="text" id="userInput" style="width: 90vw;">
+        <input type="submit" hidden>
+    </form>
 
     <script src="scripts.js"></script>
-    <script src="jquery-3.6.0.min.js"></script>
 </body>
 </html>
