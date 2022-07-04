@@ -11,36 +11,41 @@ let cmdDict = {
 let fileList = ['file.txt'];
 
 function processInput() {
-    print(inp.value + '<br>');
+    print(inp.value);
 
     let cmd = inp.value.split(' ');
     if (cmd[0] == 'help') {
         for (const key of Object.keys(cmdDict)) {
-            print(key + ': ' + cmdDict[key] + '<br>');
+            print(key + ': ' + cmdDict[key]);
         };
     } else if (cmd[0] == 'ls') {
         for (const files of fileList) {
-            print(files + '<br>');
+            print(files);
         };
     } else if (cmd[0] == 'open') {
         openFile(cmd[1]);
     } else {
         print('No such command. Try \'help\' to list all valid commands.');
     }
-
-    print('<br>');
-    print('<br>' + front);
+    
+    cons.innerHTML += '<br>' + front;
     inp.value = '';
 
     function openFile(file) {
-        if (file == 'file.txt') {
-            print('PLACEHOLDER 503');
+        if (fileList.includes(file)) {
+            print('————————————————————————————————————————————————');
+            if (file == 'file.txt') {
+                print('This is a placeholder text file.');
+            } else if (file == "") {
+                
+            }
+            print('————————————————————————————————————————————————');
         } else {
             print('No such file. Please ensure that there are no additional characters in your command.');
         }
     }
 }
 
-let print = (val) => cons.innerHTML += val;
+let print = (value) => cons.innerHTML += value + '<br>';
 
-print(front);
+cons.innerHTML += front;
