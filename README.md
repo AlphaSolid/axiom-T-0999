@@ -1,7 +1,7 @@
 # AXIOM Terminal 0999
 
 ## A terminal simulator test
-- Inspired by all terminals, ranging from DOS to bash, SCiPNET to unnecessary terminals...
+- Inspired by many terminals, ranging from DOS to bash, SCiPNET to unnecessary terminals...
 - This is just a test, so it is public and important information will not be put inside the code or terminal
 
 ## AXIOM Terminal 1000
