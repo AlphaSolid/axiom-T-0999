@@ -2,6 +2,8 @@ var front = 'user $' + ' ';
 const inp = document.getElementById('userInput');
 const cons = document.getElementById('console');
 
+var dir = '';
+
 let cmdDict = {
     help: 'List of valid commands (this)',
     cd: 'Change directory',
@@ -9,7 +11,7 @@ let cmdDict = {
     open: 'Open an existing file'
 };
 
-let fileList = ['folder/', 'file.txt', 'count.exe', 'folder/test.txt'];
+let fileList = ['folder/', 'file.txt', 'count.exe', 'folder/test.txt', 'le/', 'le/ner/'];
 
 function processInput() {
     if (inp.value != '') {
@@ -39,7 +41,7 @@ function processInput() {
 
         function openFile(file) {
             if (fileList.includes(file) && !file.includes('/')) {
-                print('————————————————————————————————————————————————');
+                print('—————————————————————————————————————————————');
                 if (file == 'file.txt') {
                     print('This is a placeholder text file.');
                 } else if (file == 'count.exe') {
@@ -49,23 +51,34 @@ function processInput() {
 
                     print('Finished counting, exiting program...');
                 }
-                print('————————————————————————————————————————————————');
+                print('—————————————————————————————————————————————');
             } else {
                 print('No such file. Please ensure that there are no additional characters in your command.');
             }
         }
 
         function changeDir(d) {
-            var dir;
             if (fileList.includes(d) || fileList.includes(d + '/')) {
                 print('PLACEHOLDER 101');
-                dir = 'd';
+                if (d.includes('/')) {
+                    dir += d;
+                } else {
+                    dir += d + '/';
+                }
             } else if (d == '..') {
                 print('PLACEHOLDER 102');
-                dir = '';
+                const arr = dir.split('/');
+                arr.pop();
+                arr.pop();
+                dir = arr.toString();
+                dir = dir.replace(/,/g, '/');
+                if (dir !== '') {
+                    dir += '/';
+                }
             } else {
                 print('No such directory.');
             }
+            alert(dir);
         }
     }
 }
