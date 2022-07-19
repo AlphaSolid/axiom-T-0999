@@ -3,6 +3,7 @@ const inp = document.getElementById('userInput');
 const cons = document.getElementById('console');
 
 var dir = '';
+let arr = [];
 
 let cmdDict = {
     help: 'List of valid commands (this)',
@@ -23,8 +24,11 @@ function processInput() {
                 print(key + ': ' + cmdDict[key]);
             };
         } else if (cmd[0] == 'ls') {
-            for (const files of fileList) {
-                print(files);
+            arr = fileList.filter((elem) => {
+                return elem.includes(dir) && elem != dir;
+            });
+            for (const i of arr) {
+                print(i);
             };
         } else if (cmd[0] == 'open') {
             openFile(cmd[1]);
@@ -58,7 +62,7 @@ function processInput() {
         }
 
         function changeDir(d) {
-            if (fileList.includes(d) || fileList.includes(d + '/')) {
+            if (fileList.includes(dir + d) || fileList.includes(dir + d + '/')) {
                 print('PLACEHOLDER 101');
                 if (d.includes('/')) {
                     dir += d;
@@ -67,7 +71,7 @@ function processInput() {
                 }
             } else if (d == '..') {
                 print('PLACEHOLDER 102');
-                const arr = dir.split('/');
+                arr = dir.split('/');
                 arr.pop();
                 arr.pop();
                 dir = arr.toString();
