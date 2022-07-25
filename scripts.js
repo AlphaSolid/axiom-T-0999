@@ -1,4 +1,4 @@
-var front = 'user $' + ' ';
+var front;
 const inp = document.getElementById('userInput');
 const cons = document.getElementById('console');
 
@@ -38,6 +38,7 @@ function processInput() {
             print('No such command. Try \'help\' to list all valid commands.');
         }
 
+        front = 'user [' + dir + '] $ ';
         cons.innerHTML += '<br>' + front;
         inp.value = '';
         var objDiv = document.getElementById('screen');
@@ -63,14 +64,12 @@ function processInput() {
 
         function changeDir(d) {
             if (fileList.includes(dir + d) || fileList.includes(dir + d + '/')) {
-                print('PLACEHOLDER 101');
                 if (d.includes('/')) {
                     dir += d;
                 } else {
                     dir += d + '/';
                 }
             } else if (d == '..') {
-                print('PLACEHOLDER 102');
                 arr = dir.split('/');
                 arr.pop();
                 arr.pop();
@@ -82,11 +81,10 @@ function processInput() {
             } else {
                 print('No such directory.');
             }
-            alert(dir);
         }
     }
 }
 
 let print = (value) => cons.innerHTML += value + '<br>';
 
-cons.innerHTML += front;
+cons.innerHTML += 'user [] $ ';
