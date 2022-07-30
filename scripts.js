@@ -12,7 +12,7 @@ let cmdDict = {
     open: 'Open an existing file'
 };
 
-let fileList = ['folder/', 'file.txt', 'count.exe', 'folder/test.txt', 'le/', 'le/ner/'];
+let fileList = ['folder/', 'file.txt', 'count.exe', 'folder/testItem', 'another/', 'another/itemTest'];
 
 function processInput() {
     if (inp.value != '') {
